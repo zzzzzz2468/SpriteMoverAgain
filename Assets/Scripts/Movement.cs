@@ -29,17 +29,6 @@ public class Movement : MonoBehaviour
             float vertical = Input.GetAxisRaw("Vertical");
             playerMovement(horizontal, vertical);
         }
-        else if (canMove == false)
-        {
-            if(player.transform.position.x >= -5 || player.transform.position.x >= 5)
-            {
-                canMove = true;
-            }
-            else if(player.transform.position.y >= -5 || player.transform.position.y >= 5)
-            {
-                canMove = true;
-            }
-        }
 
         //Returning the player to its start position
         if (Input.GetKeyDown(KeyCode.Space))
@@ -47,8 +36,18 @@ public class Movement : MonoBehaviour
 
 
         //Setting the player inactive
-        if (Input.GetKeyDown(KeyCode.P))
-            player.SetActive(false);
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            if(player.activeInHierarchy)
+                player.SetActive(false);
+            else
+            {
+                player.SetActive(true);
+                player.transform.position = startPos;
+            }
+                
+        }
+            
 
 
         //Input For exiting the game
@@ -67,6 +66,10 @@ public class Movement : MonoBehaviour
             {
                 canMove = false;
                 Debug.Log(canMove);
+            }
+            else
+            {
+                canMove = true;
             }
         }
     }
