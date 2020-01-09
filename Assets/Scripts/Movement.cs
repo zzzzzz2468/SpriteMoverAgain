@@ -17,11 +17,13 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
+
         //enabling and disabling movement in game
         if (canMove == true && Input.GetKeyDown(KeyCode.P))
             canMove = false;
         else if (canMove == false && Input.GetKeyDown(KeyCode.P))
             canMove = true;
+
 
         //Movement
         if (canMove)
@@ -31,9 +33,11 @@ public class Movement : MonoBehaviour
             playerMovement(horizontal, vertical);
         }
 
+
         //Returning the player to its start position
         if (Input.GetKeyDown(KeyCode.Space))
             player.transform.position = startPos;
+
 
         //Setting the player inactive
         if (Input.GetKeyDown(KeyCode.Q))
@@ -44,13 +48,14 @@ public class Movement : MonoBehaviour
             {
                 player.SetActive(true);
                 player.transform.position = startPos;
-            }
-                
+            }   
         }
+
 
         //Input For exiting the game
         if (Input.GetKeyDown(KeyCode.Escape))
             Exit();
+
 
         //Limiting how far the player can move from center
         if (Input.GetKey(KeyCode.LeftShift))
@@ -61,6 +66,7 @@ public class Movement : MonoBehaviour
                 canMove = false;
         }
 
+
         //allowing the player to move freely again
         else if(Input.GetKeyUp(KeyCode.LeftShift))
         {
@@ -70,14 +76,15 @@ public class Movement : MonoBehaviour
                 canMove = true;
         }
 
+
         gridMovement();
     }
-
 
     //Exiting the game
     void Exit()
     {
         Application.Quit();
+        UnityEditor.EditorApplication.isPlaying = false;
     }
 
     //causing the player to be able to move
@@ -98,33 +105,41 @@ public class Movement : MonoBehaviour
         Vector3 temp = new Vector3(7.0f, 2.0f, 0);
         if (Input.GetKey(KeyCode.Alpha1))
             player.transform.position = temp;
+
         temp = new Vector3(4.0f, -1.0f, 0);
         if (Input.GetKey(KeyCode.Alpha2))
             player.transform.position = temp;
+
         temp = new Vector3(-2.0f, 5.0f, 0);
         if (Input.GetKey(KeyCode.Alpha3))
             player.transform.position = temp;
+
         temp = new Vector3(-2.0f, -4.0f, 0);
         if (Input.GetKey(KeyCode.Alpha4))
             player.transform.position = temp;
+
         temp = new Vector3(3.0f, -3.0f, 0);
         if (Input.GetKey(KeyCode.Alpha5))
             player.transform.position = temp;
+
         temp = new Vector3(7.0f, 3.0f, 0);
         if (Input.GetKey(KeyCode.Alpha6))
             player.transform.position = temp;
+
         temp = new Vector3(1.0f, 1.0f, 0);
         if (Input.GetKey(KeyCode.Alpha7))
             player.transform.position = temp;
+
         temp = new Vector3(-2.0f, -3.0f, 0);
         if (Input.GetKey(KeyCode.Alpha8))
             player.transform.position = temp;
+
         temp = new Vector3(-7.0f, 2.0f, 0);
         if (Input.GetKey(KeyCode.Alpha9))
             player.transform.position = temp;
+
         temp = new Vector3(-2.0f, -5.0f, 0);
         if (Input.GetKey(KeyCode.Alpha0))
             player.transform.position = temp;
-        temp = new Vector3(-6.0f, -1.0f, 0);
     }
 }
