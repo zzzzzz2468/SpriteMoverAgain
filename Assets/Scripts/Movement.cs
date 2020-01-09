@@ -8,7 +8,6 @@ public class Movement : MonoBehaviour
     public GameObject player;
     public int speed;
     private bool canMove = true;
-    public int maxSpeed;
 
     void Start()
     {
