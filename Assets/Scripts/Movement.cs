@@ -8,6 +8,7 @@ public class Movement : MonoBehaviour
     public GameObject player;
     public int speed;
     private bool canMove = true;
+    public int maxSpeed;
 
     void Start()
     {
@@ -78,7 +79,9 @@ public class Movement : MonoBehaviour
 
 
         gridMovement();
+
     }
+
 
     //Exiting the game
     void Exit()
@@ -87,18 +90,34 @@ public class Movement : MonoBehaviour
         UnityEditor.EditorApplication.isPlaying = false;
     }
 
+
     //causing the player to be able to move
     private void playerMovement(float hor, float vert)
     {    
         if(canMove == true)
         {
-            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
-                transform.position += transform.up * vert * speed * Time.deltaTime;
-            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A))
+            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow))
+            {
+                //detecting if moving diagnal
+                if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
+                {
+                    transform.position += transform.up * vert * speed * Time.deltaTime / 2;
+                }
+                else
+                {
+                    transform.position += transform.up * vert * speed * Time.deltaTime;
+                }
+            }
+                
+            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
+            {
                 transform.position += transform.right * hor * speed * Time.deltaTime;
+            }
+                
         }
 
     }
+
 
     private void gridMovement()
     {
