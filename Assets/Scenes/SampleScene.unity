@@ -288,3 +288,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1123861883}
   speed: 5
+  maxSpeed: 5
