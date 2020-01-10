@@ -77,6 +77,16 @@ public class Movement : MonoBehaviour
         }
 
 
+        if(Input.GetKeyDown(KeyCode.Z))
+        {
+            GetComponent<Movement>().enabled = false;
+        }
+
+        if(GetComponent<Movement>().enabled == false)
+        {
+            GetComponent<Movement>().enabled = true;
+        }
+
         gridMovement();
 
     }
