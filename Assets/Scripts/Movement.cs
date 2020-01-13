@@ -77,6 +77,7 @@ public class Movement : MonoBehaviour
         }
 
 
+        //eneabling and disabling component
         if(Input.GetKeyDown(KeyCode.Z))
         {
             GetComponent<Movement>().enabled = false;
