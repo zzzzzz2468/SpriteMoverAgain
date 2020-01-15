@@ -76,9 +76,18 @@ public class Movement : MonoBehaviour
                 canMove = true;
         }
 
+        //allowing player to move back towards middle of scene
+        if (Input.GetKey(KeyCode.S) && player.transform.position.y > 5)
+            canMove = true;
+        if (Input.GetKey(KeyCode.A) && player.transform.position.x > 5)
+            canMove = true;
+        if (Input.GetKey(KeyCode.W) && player.transform.position.y < -5)
+            canMove = true;
+        if (Input.GetKey(KeyCode.D) && player.transform.position.x < -5)
+            canMove = true;
 
         //eneabling and disabling component
-        if(Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Z))
         {
             GetComponent<Movement>().enabled = false;
         }
